@@ -12,9 +12,9 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/dizzyfool/zenrpc/v2"
+	"github.com/dizzyfool/zenrpc/v2/testdata"
 	"github.com/gorilla/websocket"
-	"github.com/vmkteam/zenrpc/v2"
-	"github.com/vmkteam/zenrpc/v2/testdata"
 )
 
 func TestServer_ServeHTTPWithHeaders(t *testing.T) {

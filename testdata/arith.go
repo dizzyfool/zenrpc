@@ -5,8 +5,8 @@ import (
 	"errors"
 	"math"
 
-	"github.com/vmkteam/zenrpc/v2"
-	"github.com/vmkteam/zenrpc/v2/testdata/model"
+	"github.com/dizzyfool/zenrpc/v2"
+	"github.com/dizzyfool/zenrpc/v2/testdata/model"
 )
 
 //go:generate zenrpc

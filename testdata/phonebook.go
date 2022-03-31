@@ -6,7 +6,7 @@ import (
 	"errors"
 	"sync"
 
-	"github.com/vmkteam/zenrpc/v2"
+	"github.com/dizzyfool/zenrpc/v2"
 )
 
 // SerialPeopleAccess is middleware for seiral access to PhoneBook methods

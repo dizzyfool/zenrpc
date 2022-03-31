@@ -1,4 +1,4 @@
-module github.com/vmkteam/zenrpc/v2
+module github.com/dizzyfool/zenrpc/v2
 
 go 1.13
 

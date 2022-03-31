@@ -1,7 +1,7 @@
 package testdata
 
 import (
-	"github.com/vmkteam/zenrpc/v2"
+	"github.com/dizzyfool/zenrpc/v2"
 )
 
 //go:generate zenrpc

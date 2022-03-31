@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"testing"
 
-	"github.com/vmkteam/zenrpc/v2"
-	"github.com/vmkteam/zenrpc/v2/testdata"
+	"github.com/dizzyfool/zenrpc/v2"
+	"github.com/dizzyfool/zenrpc/v2/testdata"
 )
 
 var rpc = zenrpc.NewServer(zenrpc.Options{BatchMaxLen: 5, AllowCORS: true})

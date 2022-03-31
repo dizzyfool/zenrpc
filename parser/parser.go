@@ -10,7 +10,7 @@ import (
 	"unicode"
 	"unicode/utf8"
 
-	"github.com/vmkteam/zenrpc/v2/smd"
+	"github.com/dizzyfool/zenrpc/v2/smd"
 )
 
 const (

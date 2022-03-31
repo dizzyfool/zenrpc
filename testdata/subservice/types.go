@@ -3,7 +3,7 @@ package subarithservice
 import (
 	"time"
 
-	"github.com/vmkteam/zenrpc/v2/testdata/objects"
+	"github.com/dizzyfool/zenrpc/v2/testdata/objects"
 )
 
 type Point struct {

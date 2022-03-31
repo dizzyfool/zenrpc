@@ -8,8 +8,8 @@ import (
 
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 
-	"github.com/vmkteam/zenrpc/v2"
-	"github.com/vmkteam/zenrpc/v2/testdata"
+	"github.com/dizzyfool/zenrpc/v2"
+	"github.com/dizzyfool/zenrpc/v2/testdata"
 )
 
 func main() {

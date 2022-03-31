@@ -7,7 +7,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/vmkteam/zenrpc/v2/parser"
+	"github.com/dizzyfool/zenrpc/v2/parser"
 )
 
 const (

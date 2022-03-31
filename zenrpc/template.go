@@ -3,7 +3,7 @@ package main
 import (
 	"text/template"
 
-	"github.com/vmkteam/zenrpc/v2/parser"
+	"github.com/dizzyfool/zenrpc/v2/parser"
 )
 
 var (
@@ -68,8 +68,8 @@ import (
 	"encoding/json"
 	"context"
 
-	"github.com/vmkteam/zenrpc/v2"
-	"github.com/vmkteam/zenrpc/v2/smd"
+	"github.com/dizzyfool/zenrpc/v2"
+	"github.com/dizzyfool/zenrpc/v2/smd"
 
 	{{ range .ImportsIncludedToGeneratedCode}}
 		{{if .Name}}{{.Name.Name}} {{end}}{{.Path.Value}}

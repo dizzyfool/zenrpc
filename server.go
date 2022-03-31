@@ -12,7 +12,7 @@ import (
 
 	"github.com/gorilla/websocket"
 
-	"github.com/vmkteam/zenrpc/v2/smd"
+	"github.com/dizzyfool/zenrpc/v2/smd"
 )
 
 type contextKey string
