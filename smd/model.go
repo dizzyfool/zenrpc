@@ -157,7 +157,7 @@ var typeNameRegex = regexp.MustCompile(`[^a-zA-z1-9_]`)
 func TypeName(n, t string) string {
 	name := strings.Title(typeNameRegex.ReplaceAllString(n, ""))
 
-	if t == "Array" {
+	if strings.ToLower(t) == Array {
 		return fmt.Sprintf("[]%s", name)
 	}
 
