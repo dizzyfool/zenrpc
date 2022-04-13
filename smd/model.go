@@ -114,13 +114,13 @@ func (pl PropertyList) MarshalJSON() ([]byte, error) {
 		omap.Set(kv.Name, kv)
 	}
 
-	return omap.MarshalJSON()
+	return json.Marshal(omap)
 }
 
 func (pl *PropertyList) UnmarshalJSON(data []byte) error {
 	omap := orderedmap.New()
 
-	if err := omap.UnmarshalJSON(data); err != nil {
+	if err := json.Unmarshal(data, omap); err != nil {
 		return err
 	}
 
