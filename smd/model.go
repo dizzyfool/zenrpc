@@ -1,11 +1,9 @@
 package smd
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
-	"regexp"
-	"strings"
+
+	"github.com/iancoleman/orderedmap"
 )
 
 const (
@@ -72,7 +70,6 @@ type JSONSchema struct {
 	// but positional parameters MAY be issued by the client and servers SHOULD support positional parameters.
 	Name        string                `json:"name,omitempty"`
 	Type        string                `json:"type,omitempty"`
-	TypeName    string                `json:"typeName,omitempty"`
 	Optional    bool                  `json:"optional,omitempty"`
 	Default     *json.RawMessage      `json:"default,omitempty"`
 	Description string                `json:"description,omitempty"`
@@ -111,59 +108,35 @@ func RawMessageString(m string) *json.RawMessage {
 
 // MarshalJSON implements the json.Marshaler interface for preserving map key sorting in SMD scheme.
 func (pl PropertyList) MarshalJSON() ([]byte, error) {
-	var buf bytes.Buffer
+	omap := orderedmap.New()
 
-	buf.WriteString("{")
-	for i, kv := range pl {
-		if i != 0 {
-			buf.WriteString(",")
-		}
-		// marshal key
-		key, err := json.Marshal(kv.Name)
-		if err != nil {
-			return nil, err
-		}
-		buf.Write(key)
-		buf.WriteString(":")
-		// marshal value
-		val, err := json.Marshal(kv)
-		if err != nil {
-			return nil, err
-		}
-		buf.Write(val)
+	for _, kv := range pl {
+		omap.Set(kv.Name, kv)
 	}
 
-	buf.WriteString("}")
-	return buf.Bytes(), nil
+	return omap.MarshalJSON()
 }
 
 func (pl *PropertyList) UnmarshalJSON(data []byte) error {
+	omap := orderedmap.New()
+
+	if err := omap.UnmarshalJSON(data); err != nil {
+		return err
+	}
+
 	var v map[string]Property
 	if err := json.Unmarshal(data, &v); err != nil {
 		return err
 	}
+
 	var plist PropertyList
-	for k, vl := range v {
-		p := vl
-		p.Name = k
-		plist = append(plist, p)
+	for _, k := range omap.Keys() {
+		if p, ok := v[k]; ok {
+			p.Name = k
+			plist = append(plist, p)
+		}
 	}
 	*pl = plist
+
 	return nil
-}
-
-var typeNameRegex = regexp.MustCompile(`[^a-zA-z1-9_]`)
-
-func TypeName(n, t string) string {
-	name := strings.Title(typeNameRegex.ReplaceAllString(n, ""))
-
-	if strings.ToLower(t) == Array {
-		return fmt.Sprintf("[]%s", name)
-	}
-
-	return name
-}
-
-func IsSMDTypeName(n, t string) bool {
-	return n == TypeName(n, t)
 }
